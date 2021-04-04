@@ -73,6 +73,7 @@ const Filter = ({ searchParam, onChangeFilter }) => {
                 onChange={e => _handleChangeFilter(e, 'death')}
             />
             <Box>
+                {/* 나이 조건 조회 미구현 */}
                 <label>나이</label>
                 <Input type="text" name="start" value={ageMin} />~
                 <Input type="text" name="end" value={ageMax} />

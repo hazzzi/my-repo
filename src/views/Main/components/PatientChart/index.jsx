@@ -80,6 +80,10 @@ const PatientChart = ({ searchParam }) => {
                 <h5>민족별 환자 수</h5>
                 {ethnicityData && <Chart dataKey="count" nameKey="ethnicity" data={ethnicityData} />}
             </div>
+            {/* <div>
+              (성별 + 인종)별 환자 수 미구현
+              (성별 + 민족)별 환자 수 미구현
+            </div> */}
         </GridContainer>
     )
 }
