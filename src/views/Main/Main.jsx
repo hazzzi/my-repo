@@ -10,18 +10,22 @@ export default function Main() {
     const [patientPagerData, setPatientPagerData] = useState()
     const [searchParam, setSearchParam] = useState({ page: 1, length: 5 })
 
+    // 페이지 버튼 클릭
     const _handleClickPageButton = page => {
         setSearchParam({ ...searchParam, page })
     }
 
+    // 페이지당 row 갯수 변경
     const _handleChangeRow = length => {
         setSearchParam({ ...searchParam, length })
     }
 
+    // 정렬 순서 변경
     const _handleChangeOrder = ({ orderColumn, orderDesc }) => {
         setSearchParam({ ...searchParam, orderColumn, orderDesc })
     }
 
+    // 필터 조건 변경
     const _handleChangeFilter = (key, value) => {
         if (key === 'age') {
             const [ageMin, ageMax] = value || []
@@ -31,6 +35,7 @@ export default function Main() {
         }
     }
 
+    // 환자 데이터 조회
     const reloadData = async ({ searchParam }) => {
         try {
             const { patient } = await api.patientList(searchParam)

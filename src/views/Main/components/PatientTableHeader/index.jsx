@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TableHeadCell, TableRow } from 'src/components'
+import PropTypes from 'prop-types'
 
 const PatientTableHeader = ({ orderColumn, orderDesc, onChangeOrder }) => {
     const [orderState, setOrderState] = useState({ column: '', desc: null })
@@ -14,6 +15,7 @@ const PatientTableHeader = ({ orderColumn, orderDesc, onChangeOrder }) => {
         { key: 'death', value: '사망 여부' },
     ]
 
+    // 열 제목 클릭
     const _handleClickOrder = key => {
         if (key === 'age') {
             return
@@ -53,6 +55,14 @@ const PatientTableHeader = ({ orderColumn, orderDesc, onChangeOrder }) => {
     )
 }
 
-PatientTableHeader.propTypes = {}
+PatientTableHeader.propTypes = {
+    orderColumn: PropTypes.string,
+    orderDesc: PropTypes.bool,
+    onChangeOrder: PropTypes.func.isRequired,
+}
+
+PatientTableHeader.defaultProps = {
+    onChangeOrder: () => {},
+}
 
 export default PatientTableHeader

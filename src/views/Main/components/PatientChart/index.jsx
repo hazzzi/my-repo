@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api from 'src/api'
 import { Chart } from 'src/components'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const GridContainer = styled.div`
     display: grid;
@@ -24,9 +25,10 @@ const dataPreprocessor = (data, attribute) => {
     return result
 }
 
-export default function PatientChart({ searchParam }) {
+const PatientChart = ({ searchParam }) => {
     const [stats, setStats] = useState({})
 
+    // 통계 데이터 필터링
     const statsFilter = (stats, { gender, race, ethnicity }) => {
         let result = stats
         if (gender) {
@@ -41,6 +43,7 @@ export default function PatientChart({ searchParam }) {
         return result
     }
 
+    // 통계 데이터 조회
     const reloadData = async ({ searchParam }) => {
         try {
             const { stats } = await api.patientStats()
@@ -80,3 +83,13 @@ export default function PatientChart({ searchParam }) {
         </GridContainer>
     )
 }
+
+PatientChart.propTypes = {
+    searchParam: PropTypes.object,
+}
+
+PatientChart.defaultProps = {
+    searchParam: {},
+}
+
+export default PatientChart

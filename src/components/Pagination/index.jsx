@@ -21,7 +21,7 @@ const ButtonGroup = styled.div`
 const Pagination = ({ page, length, total, onClick, onChangeRow }) => {
     const totalPage = Math.ceil(total / length)
 
-    // 다음 페이지
+    // 다음 페이지 버튼 클릭
     const _handleNextPage = () => {
         if (page >= totalPage) {
             return
@@ -29,7 +29,7 @@ const Pagination = ({ page, length, total, onClick, onChangeRow }) => {
         onClick(page + 1)
     }
 
-    // 이전 페이지
+    // 이전 페이지 버튼 클릭
     const _handlePrevPage = () => {
         if (page <= 1) {
             return
@@ -37,6 +37,7 @@ const Pagination = ({ page, length, total, onClick, onChangeRow }) => {
         onClick(page - 1)
     }
 
+    // 페이지당 row 갯수 변경
     const _handleChangeRows = e => {
         onChangeRow(e.target.value)
     }

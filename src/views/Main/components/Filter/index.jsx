@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api from 'src/api'
 import { SelectBox } from 'src/components'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Box = styled.div`
     display: inline-flex;
@@ -15,6 +16,7 @@ const Input = styled.input`
 const Filter = ({ searchParam, onChangeFilter }) => {
     const [filterData, setfilterData] = useState({})
 
+    // 테이블 필터 데이터 조회
     const reloadData = async () => {
         try {
             const { genderList } = await api.genderList()
@@ -30,6 +32,7 @@ const Filter = ({ searchParam, onChangeFilter }) => {
         reloadData()
     }, [])
 
+    // 필터 조건 변경
     const _handleChangeFilter = (e, key) => {
         const value = e.target.value
         if (value === 'all') {
@@ -38,9 +41,6 @@ const Filter = ({ searchParam, onChangeFilter }) => {
             onChangeFilter(key, value)
         }
     }
-
-    // TODO
-    // 나이 필터 기능 추가
 
     const { genderList, raceList, ethnicityList } = filterData
     const { gender, race, ethnicity, death, ageMin, ageMax } = searchParam
@@ -79,6 +79,15 @@ const Filter = ({ searchParam, onChangeFilter }) => {
             </Box>
         </div>
     )
+}
+
+Filter.propTypes = {
+    searchParam: PropTypes.object.isRequired,
+    onChangeFilter: PropTypes.func.isRequired,
+}
+
+Filter.defaultProps = {
+    searchParam: {},
 }
 
 export default Filter
