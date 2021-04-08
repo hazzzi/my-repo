@@ -10,36 +10,36 @@ export const patientList = async ({ page, length, orderColumn, orderDesc, gender
     if (ethnicity) url = `${url}&ethnicity=${ethnicity}`
     if (death) url = `${url}&death=${death === 'Y' ? true : false}`
 
-    const request = await fetch(url)
-    return await request.json()
+    const response = await fetch(url)
+    return await response.json()
 }
 
 // 성별 목록 조회
 export const genderList = async () => {
-    const request = await fetch(`${API_URL}/gender/list`)
-    return await request.json()
+    const response = await fetch(`${API_URL}/gender/list`)
+    return await response.json()
 }
 
 // 인종 목록 조회
 export const raceList = async () => {
-    const request = await fetch(`${API_URL}/race/list`)
-    return await request.json()
+    const response = await fetch(`${API_URL}/race/list`)
+    return await response.json()
 }
 
 // 민족 목록 조회
 export const ethnicityList = async () => {
-    const request = await fetch(`${API_URL}/ethnicity/list`)
-    return await request.json()
+    const response = await fetch(`${API_URL}/ethnicity/list`)
+    return await response.json()
 }
 
 // 환자 상세 정보 요약
 export const patientBrief = async personID => {
-    const request = await fetch(`${API_URL}/patient/brief/${personID}`)
-    return await request.json()
+    const response = await fetch(`${API_URL}/patient/brief/${personID}`)
+    return await response.json()
 }
 
 // 성별+인종+민족별 환자 수 통계
 export const patientStats = async () => {
-    const request = await fetch(`${API_URL}/patient/stats`)
-    return await request.json()
+    const response = await fetch(`${API_URL}/patient/stats`)
+    return await response.json()
 }
