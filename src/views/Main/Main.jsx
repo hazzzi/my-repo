@@ -83,9 +83,9 @@ export default function Main() {
                 </TableBody>
             </Table>
             <Pagination
-                page={page}
+                page={page ?? 0}
                 length={length}
-                total={totalLength}
+                total={totalLength ?? 0}
                 onClick={_handleClickPageButton}
                 onChangeRow={_handleChangeRow}
             />
